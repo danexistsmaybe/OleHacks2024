@@ -29,7 +29,7 @@ def upload():
     upload.save(save_path) # appends upload.filename automatically
 
     # call main processing algorithm
-    process_image()
+    #process_image()
 
     return 'OK'
 
