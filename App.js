@@ -3,7 +3,9 @@ import { Pressable, StyleSheet, Text, View, Button, Image, TouchableOpacity } fr
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
+
 import { router, Link } from 'expo-router';
+
 
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
@@ -34,6 +36,7 @@ export default function App() {
   
   const getTxt = async () => {
     //if (!txtFileUri.exists) {
+      //FileSystem.copyAsync(txtUrl);
       //FileSystem.copyAsync(txtUrl);
     //}
     //let result = await FileSystem.downloadAsync(txtUrl, txtFileUri);
@@ -140,8 +143,6 @@ export default function App() {
           <Button title="Pick an image from camera roll" onPress={pickImage} />
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
-          <Button title="Next page" onPress={nextPage} />
-          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
         <Text>{pageNum}</Text>
 
