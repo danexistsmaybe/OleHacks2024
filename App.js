@@ -24,8 +24,8 @@ import axios, {isCancel, AxiosError} from 'axios';
       //source = {require(splash.png)}/>
 
 const txtDir = FileSystem.cacheDirectory + 'text/';
-const txtFileUri = txtDir + `nutrition_output.txt`;
-const txtUrl = `./Backend/nutrition_output.txt`;
+const txtFileUri = txtDir + `example.txt`;
+const txtUrl = 'https://example-files.online-convert.com/document/txt/example.txt';
 
 //const absolutePath = `/storage/emulated/0/MyApp/FoodSnap`
 
@@ -57,10 +57,7 @@ export default function App() {
   
   const getTxt = async () => {
     //if (!txtFileUri.exists) {
-    FileSystem.copyAsync({
-      from: 'file://Backend',
-      to: txtDir,
-    });
+      //FileSystem.copyAsync(txtUrl);
     //}
     //let result = await FileSystem.downloadAsync(txtUrl, txtFileUri);
     //const response = await FileSystem.readAsStringAsync(txtUrl);
