@@ -5,11 +5,41 @@ import { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
+//import { FileSystem } from 'expo-file-system';
 import axios, {isCancel, AxiosError} from 'axios';
 
+const txtDir = FileSystem.cacheDirectory + 'text/';
+const txtFileUri = txtDir + `example.txt`;
+const txtUrl = `https://example-files.online-convert.com/document/txt/example.txt`;
+
+//const absolutePath = `/storage/emulated/0/MyApp/FoodSnap`
 
 export default function App() {
   const [image, setImage] = useState(null);
+  //var fil = FileSystem.readAsStringAsync(FileSystem.documentDirectory + './Backend/nutrition_output.txt');
+  /*fetch(dir)
+  .then(row => row.text())
+  .then(text => {
+    console.log('text:', text);
+  });*/
+
+  async function ensureDirExists() {
+    const dirInfo = await FileSystem.getInfoAsync(txtDir);
+    if (!dirInfo.exists) {
+      console.log("TXT directory doesn't exist, creating…");
+      await FileSystem.makeDirectoryAsync(txtDir, { intermediates: true });
+    }
+    else {
+      console.log("That directory already exists.")
+    }
+  }
+  
+  const getTxt = async () => {
+    //let result = await FileSystem.downloadAsync(txtUrl, txtFileUri);
+    //const response = await FileSystem.readAsStringAsync(txtUrl);
+    //console.log(response)
+    console.log(await FileSystem.readAsStringAsync(txtFileUri));
+    };
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -87,12 +117,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Bingus bongiss</Text>
-      
-      {/* CAMERA STUFF */}
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      <Button title="dirCon" onPress={ensureDirExists} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 300 }} />}
 
+      {/* CAMERA STUFF */}
+      <Button title="Pick an image from camera roll" onPress={getTxt} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
       <StatusBar style="auto" />
     </View>
