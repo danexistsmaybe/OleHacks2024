@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, View, Image, Button, Image, TouchableOpacity } from 'react-native';
+
+const PlaceholderImage = require('MommyMisato.jpeg');
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
@@ -63,27 +65,40 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Bingus bongiss</Text>
-      
-      {/* CAMERA STUFF */}
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-
-
+      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+    
+    <Image source={PlaceholderImage} 
+     //style={{width: 400, heigh: 400}}
+    />
+
+    <Image style ={{
+      width: 0,
+      height: 0,
+    }}
+      source = {require('MommyMisato.jpeg')}/>
+
+    <Button
+      onPress = {onPressLearnMore}
+      title = "FUCKING HELP"
+      color = "#841584"
+      accessibiiltyLabel = "i dont know what this does"
+    />
+
+      
+    
+      
+    
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#25292e', //was #fff
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: "lightblue",
-    color: "white",
   },
 });
