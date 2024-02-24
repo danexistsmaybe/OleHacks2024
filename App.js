@@ -4,6 +4,7 @@ import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
+import { FileSystem } from 'expo-file-system';
 import axios, {isCancel, AxiosError} from 'axios';
 
 
@@ -25,20 +26,25 @@ export default function App() {
       setImage(result.assets[0].uri);
     }
 
-    var bodyFormData = new FormData();
+    /*var bodyFormData = new FormData();
     bodyFormData.append('image',image);
 
     //POST
-    axios.post('http://localhost:8080/upload', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
+    // Passing configuration object to axios
+    axios({
+      method: 'get',
+      url: "http://192.168.56.1:8080/upload",
+    }).then((response) => {
+      console.log(response.data);
     });
+
+    // Invoking the get method to perform a GET request
+    console.log("doing");
+    axios("http://192.168.56.1:8080/upload").then((response) => {
+      console.log("ddddoing");
+      console.log(response.data);
+    });
+    console.log("passed");
     /*axios({
       method: "post",
       url: "http://localhost:8080/upload",
