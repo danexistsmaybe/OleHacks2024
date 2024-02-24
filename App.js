@@ -29,9 +29,19 @@ export default function App() {
     bodyFormData.append('image',image);
 
     //POST
-    axios({
+    axios.post('http://localhost:8080/upload', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    /*axios({
       method: "post",
-      url: "localhost",
+      url: "http://localhost:8080/upload",
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -42,7 +52,7 @@ export default function App() {
       .catch(function (response) {
         //handle error
         console.log(response);
-      });
+      });*/
   };
 
   return (
