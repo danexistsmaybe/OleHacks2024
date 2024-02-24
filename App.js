@@ -142,7 +142,9 @@ export default function App() {
 
           <Button title="Pick an image from camera roll" onPress={pickImage} />
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-
+         
+          <Button title="Next page" onPress={nextPage} />
+          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
         <Text>{pageNum}</Text>
 
