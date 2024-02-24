@@ -33,3 +33,8 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+#my stuff
+/Backend/prompt.jpg
+/Backend/nutrition_output.jpg
+/Backend/key.txt
