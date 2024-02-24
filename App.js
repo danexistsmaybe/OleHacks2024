@@ -19,6 +19,14 @@ import axios, {isCancel, AxiosError} from 'axios';
 
 
 export default function App() {
+
+  const AppButton = ({onPress, title}) => (
+    <TouchableOpacity onPress = {onPress} style={styles.button}>
+      <Text style={styles.buttonText}>{title}</Text>
+
+    </TouchableOpacity>
+  )
+
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -76,8 +84,14 @@ export default function App() {
       <Text>Bingus bongiss</Text>
       
       {/* CAMERA STUFF */}
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      <AppButton title="Select an Image from Camera Roll" onPress={pickImage} 
+        style = {styles.button}
+      />
+      {image && <Image source={{ uri: image }} 
+        style={{ 
+          width: 200, 
+          height: 200,
+          }} />}
 
 
       <StatusBar style="auto" />
@@ -93,8 +107,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: "lightblue",
-    color: "white",
+    //elevation: 8,
+    position: 'absolute',
+    bottom: 80,
+    left:20,
+    backgroundColor: "#009688",
+    borderRadius: 36,
+    paddingVertical: 25,
+    paddingHorizontal: 20
 
   },
+  buttonText: {
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  }
 });
