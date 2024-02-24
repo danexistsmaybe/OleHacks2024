@@ -1,53 +1,10 @@
-"""#Upload image from rep
-#Have image read and put down values into txt file
-
-#import bs4
-import os
-import requests
-from openai import OpenAI
-
-headers = { 
-    "Authorization": "Bearer ", 
-    "Content-Type": "application/json" 
-} 
-#Authorization: "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"
-#from config import OPENAI_API_KEY
-#from dotenv import load_dotenv
-
-OPEN_API_KEY = os.getenv("OPEN_API_KEY")
-#load_dotenv()
-#print(os.environ.get(OPEN_API_KEY))
-
-client = OpenAI()
-
-response = client.chat.completions.create(
-  model="gpt-4-vision-preview",
-  messages=[
-    {
-      "role": "user",
-      "content": [
-        {"type": "text", "text": "What’s in this image?"},
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-            "detail": "high"
-          },
-        },
-      ],
-    }
-  ],
-  max_tokens=300,
-)
-
-print(response.choices[0].message.content)"""
-
-
 import base64
 import requests
 
 # OpenAI API Key
-api_key = "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"
+file = open("key.txt","r")
+api_key = file.read()
+file.close()
 
 # Function to encode the image
 def encode_image(image_path):
