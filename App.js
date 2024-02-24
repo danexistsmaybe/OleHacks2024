@@ -3,12 +3,25 @@ import { Pressable, StyleSheet, Text, View, Button, Image, TouchableOpacity } fr
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
+
 import { router, Link } from 'expo-router';
+
 
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 //import { FileSystem } from 'expo-file-system';
 import axios, {isCancel, AxiosError} from 'axios';
+
+//const PlaceholderImage = require('MommyMisato.jpeg');
+
+//<Image source={PlaceholderImage} 
+    // style={{width: 400, heigh: 400}}
+     ///>
+//<Image style ={{
+      //width: 0,
+      //height: 0,
+    //}}
+      //source = {require(splash.png)}/>
 
 const txtDir = FileSystem.cacheDirectory + 'text/';
 const txtFileUri = txtDir + `nutrition_output.txt`;
@@ -17,7 +30,17 @@ const txtUrl = `./Backend/nutrition_output.txt`;
 //const absolutePath = `/storage/emulated/0/MyApp/FoodSnap`
 
 export default function App() {
+
   var pageNum = 0;
+
+
+  const AppButton = ({onPress, title}) => (
+    <TouchableOpacity onPress = {onPress} style={styles.button}>
+      <Text style={styles.buttonText}>{title}</Text>
+
+    </TouchableOpacity>
+  )
+
 
   const [image, setImage] = useState(null);
 
@@ -146,6 +169,11 @@ export default function App() {
           <Button title="Next page" onPress={nextPage} />
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
+      {/* CAMERA STUFF */}
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+
+
         <Text>{pageNum}</Text>
 
           <StatusBar style="auto" />
@@ -183,8 +211,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: "lightblue",
-    color: "white",
+    //elevation: 8,
+    position: 'absolute',
+    bottom: 80,
+    left:20,
+    backgroundColor: "#009688",
+    borderRadius: 36,
+    paddingVertical: 25,
+    paddingHorizontal: 20
 
   },
+  buttonText: {
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  }
 });
