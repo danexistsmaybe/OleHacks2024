@@ -1,19 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, Image } from 'react-native';
+import { Button, StyleSheet, Text, View, Image, Button, Image, TouchableOpacity } from 'react-native';
 
 const PlaceholderImage = require('MommyMisato.jpeg');
+import { Camera, CameraType } from 'expo-camera';
+import { useState } from 'react';
+
+import * as ImagePicker from 'expo-image-picker';
+import axios, {isCancel, AxiosError} from 'axios';
+
 
 export default function App() {
-  function onPressLearnMore() { 
-    alert('bitch ass mf');
-    
-  }
-
   return (
     <View style={styles.container}>
-      <Text style ={{color: '#fff' }}>Open up App.js to start working on your app!</Text>
-      <Text>Bitches be btichen</Text>
-      <Text>8---------D</Text>
+      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     
     <Image source={PlaceholderImage} 
@@ -48,38 +47,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#25292e', //was #fff
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  imageContainer: {
-    felx: 1,
-    paddingTop: 58,
-  },
-  image: {
-    width: 320,
-    height: 440,
-    borderRadius: 18,
-  },
-  
-  buttonContainer: {
-    width: 320,
-    height: 68,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 3,
-  },
-  button: {
-    borderRadius: 10,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  buttonIcon: {
-    paddingRight: 8,
-  },
-  buttonLabel: {
-    color: '#fff',
-    fontSize: 16,
   },
 });

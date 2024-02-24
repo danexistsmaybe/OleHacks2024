@@ -10,11 +10,19 @@
   },
   "dependencies": {
     "@expo/webpack-config": "~19.0.1",
+    "adb": "^0.2.0",
+    "axios": "^1.6.7",
     "expo": "~50.0.7",
+    "expo-camera": "~14.0.5",
+    "expo-image-picker": "~14.7.1",
+    "expo-media-library": "~15.9.1",
     "expo-status-bar": "~1.11.1",
+    "http-server": "^14.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.73.4",
+    "react-native-image-picker": "^7.1.0",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
