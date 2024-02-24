@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, Image, Button, Image, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-const PlaceholderImage = require('MommyMisato.jpeg');
+const PlaceholderImage = require('./assets/splash.png');
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
@@ -23,16 +23,15 @@ export default function App() {
       width: 0,
       height: 0,
     }}
-      source = {require('MommyMisato.jpeg')}/>
+      source = {require('./assets/splash.png')}/>
 
     <Button
-      onPress = {onPressLearnMore}
+      onPress = {pickImage}
       title = "FUCKING HELP"
       color = "#841584"
-      accessibiiltyLabel = "i dont know what this does"
+      accessibilityLabel = "i dont know what this does"
     />
 
-      
     
       
     
