@@ -4,7 +4,7 @@ import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
-import { FileSystem } from 'expo-file-system';
+import * as FileSystem from 'expo-file-system';
 import axios, {isCancel, AxiosError} from 'axios';
 
 
@@ -26,28 +26,13 @@ export default function App() {
       setImage(result.assets[0].uri);
     }
 
-    /*var bodyFormData = new FormData();
+    var bodyFormData = new FormData();
     bodyFormData.append('image',image);
 
     //POST
-    // Passing configuration object to axios
-    axios({
-      method: 'get',
-      url: "http://192.168.56.1:8080/upload",
-    }).then((response) => {
-      console.log(response.data);
-    });
-
-    // Invoking the get method to perform a GET request
-    console.log("doing");
-    axios("http://192.168.56.1:8080/upload").then((response) => {
-      console.log("ddddoing");
-      console.log(response.data);
-    });
-    console.log("passed");
     /*axios({
       method: "post",
-      url: "http://localhost:8080/upload",
+      url: "http://10.42.25.0:8080/upload",
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -58,8 +43,47 @@ export default function App() {
       .catch(function (response) {
         //handle error
         console.log(response);
+      });
+  */
+
+      let formData = new FormData();
+      // Assume "photo" is the name of the form field the server expects
+      //console.log(image);
+      formData.append('photo', { uri: image, name: image.split('/').pop(), type: "image/jpeg" });
+
+      return await fetch('http://10.42.25.0:8080/upload', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      });
+      
+      /*var data = new FormData();
+      const fileData = await FileSystem.readAsStringAsync(image, {
+        encoding: FileSystem.EncodingType.Base64, // Assuming the file is binary
+      });
+
+      data.append('file', fileData);
+      
+      var config = {
+        method: 'post',
+        url: 'http://10.42.25.0:8080/upload',
+        headers: { 
+          'Content-Type': 'multipart/form-data', 
+        },
+        data : data
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
       });*/
-  };
+
+};
 
   return (
     <View style={styles.container}>
