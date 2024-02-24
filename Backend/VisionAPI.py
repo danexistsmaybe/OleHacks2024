@@ -51,7 +51,7 @@ def vision(imagepath):
 
 
 def main():
-  vision("C:\\Users\\taaro\\OneDrive\\Desktop\\shopping.webp")
+  vision()
 
 if __name__ == "__main__":
   main()
