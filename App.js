@@ -121,7 +121,7 @@ export default function App() {
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 300 }} />}
 
       {/* CAMERA STUFF */}
-      <Button title="Pick an image from camera roll" onPress={getTxt} />
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
       <StatusBar style="auto" />
