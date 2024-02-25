@@ -51,7 +51,7 @@ def vision(imagepath):
 
 
 def main():
-  vision(r"C:\Users\taaro\Downloads\download.jpg")
+  vision()
 
 if __name__ == "__main__":
   main()
