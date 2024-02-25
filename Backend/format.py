@@ -4,15 +4,16 @@ def recapitalize(text):
 
 
 def format(data):
-    towrite = ["""import { View, Text } from 'react-native';
+    towrite = ["""import { View, Text, ScrollView } from 'react-native';
 
 function NewScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>"""]
+    <View style={{ flex: 1, alignItems: 'left', justifyContent: 'left', paddingLeft: 20 }}>
+    <ScrollView style={{flex:1}}>"""]
     
 
     for ingredient in data:
-        towrite.append("<Text>"+recapitalize(ingredient)+"</Text>")
+        towrite.append("<Text style={{fontWeight: 'bold',fontSize: 40,marginTop: 10}}>"+recapitalize(ingredient)+"</Text>")
         
         # do specific stuff first
         if data[ingredient].get("serving Size") != None: 
@@ -46,7 +47,7 @@ function NewScreen({ navigation }) {
             towrite.append("<Text>"+recapitalize(key)+": "+str(data[ingredient][key])+"</Text>\n")
 
 
-    towrite.append("</View>\n);\n}\nexport default NewScreen;")
+    towrite.append("</ScrollView></View>\n);\n}\nexport default NewScreen;")
     file = open("../NewScreen.js",'w')
     file.write("".join(towrite))
     file.close()
