@@ -3,20 +3,22 @@ import os
 from VisionAPI import *
 from scraper import scrape
 
+
 def clear():
     try:
         os.remove("prompt.jpg")
     except FileNotFoundError as e:
-        print()
+        print() # do nothing lol
 
+# two step process
 def process_image():
     ingredients = vision("prompt.jpg")
     scrape(ingredients.split('\n'))
 
-
-
+# server request handling
 @route('/upload', method="POST")
 def upload():
+    #try:
     category   = request.forms.get('category')
     upload     = request.files.get('photo')
     """name, ext = os.path.splitext(upload.filename)
@@ -27,9 +29,10 @@ def upload():
     clear()
     upload.filename = "prompt.jpg"
     upload.save(save_path) # appends upload.filename automatically
-
-    # call main processing algorithm
-    #process_image()
+    process_image()
+    """except Exception as e:
+        print(e)
+        return 500"""
 
     return 'OK'
 

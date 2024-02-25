@@ -46,8 +46,8 @@ def vision(imagepath):
   }
 
   response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-  print(response.json())
-  return(response.json())
+  #print(response.json()['choices'][0]['message'])
+  return(response.json()['choices'][0]['message']['content'])
 
 
 def main():
