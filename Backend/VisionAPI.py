@@ -31,7 +31,7 @@ def vision(imagepath):
         "content": [
           {
             "type": "text",
-            "text": "Please make a text file-based table of individual ingredients that are in the food that is provided with no further information added, thank you!"
+            "text": "Please make a text file-based table of individual ingredients that are in the food that is provided with no further information added, if it is not food, send back an error,thank you!"
           },
           {
             "type": "image_url",

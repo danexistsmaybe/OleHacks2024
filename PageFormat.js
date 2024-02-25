@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { useState } from 'react';
 
-
 import { router, Link } from 'expo-router';
-
 
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
@@ -13,14 +11,12 @@ import * as FileSystem from 'expo-file-system';
 import axios, {isCancel, AxiosError} from 'axios';
 
 const txtDir = FileSystem.cacheDirectory + 'text/';
-const txtFileUri = txtDir + `example.txt`;
-const txtUrl = 'https://example-files.online-convert.com/document/txt/example.txt';
+const txtFileUri = txtDir + `nutrition_output.txt`;
+const txtUrl = `./Backend/nutrition_output.txt`;
 
 //const absolutePath = `/storage/emulated/0/MyApp/FoodSnap`
 
 export default function App() {
-  var pageNum = 0;
-
   const [image, setImage] = useState(null);
 
   async function ensureDirExists() {
@@ -36,8 +32,10 @@ export default function App() {
   
   const getTxt = async () => {
     //if (!txtFileUri.exists) {
-      //FileSystem.copyAsync(txtUrl);
-      //FileSystem.copyAsync(txtUrl);
+    FileSystem.copyAsync({
+      from: 'file://Backend',
+      to: txtDir,
+    });
     //}
     //let result = await FileSystem.downloadAsync(txtUrl, txtFileUri);
     //const response = await FileSystem.readAsStringAsync(txtUrl);
@@ -47,11 +45,7 @@ export default function App() {
 
 
     function nextPage() {
-      console.log(pageNum)
-      var n = 0;
-      if (pageNum === 0) { n = 1; }
-      pageNum = n;
-      
+      return ( <Link href="/apps.js" asChild></Link>)
     }
 
   const pickImage = async () => {
@@ -130,49 +124,25 @@ export default function App() {
 
 
 };
-  if (pageNum === 0) {
-    return (
-        <View style={styles.container}>
-          <Button title="dirCon" onPress={ensureDirExists} />
-          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
-          {/* CAMERA STUFF */}
-          <Button title="Read txt" onPress={getTxt} />
-          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+  return (
+    <View style={styles.container}>
+      <Button title="dirCon" onPress={ensureDirExists} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
-          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-         
-          <Button title="Next page" onPress={nextPage} />
-          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      {/* CAMERA STUFF */}
+      <Button title="Read txt" onPress={getTxt} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
-        <Text>{pageNum}</Text>
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
-          <StatusBar style="auto" />
-        </View>
-      );
-  }
-  else {
-    return (
-      <View style={styles.container}>
-        <Button title="dirfsdCon" onPress={ensureDirExists} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      <Button title="dfs page" onPress={nextPage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
-        {/* CAMERA STUFF */}
-        <Button title="Redfsad txt" onPress={getTxt} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-
-        <Button title="Pick an sdfsegfijoufsd from camera roll" onPress={pickImage} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-
-        <Button title="Next page" onPress={nextPage} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-        <Text>{pageNum}</Text>
-
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
