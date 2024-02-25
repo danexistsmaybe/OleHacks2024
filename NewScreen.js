@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 function NewScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'left', justifyContent: 'left', paddingLeft: 20 }}>
-    <ScrollView style={{flex:1}}><Text style={{fontWeight: 'bold',fontSize: 40,marginTop: 10}}>Chocolate</Text><Text>Calories: 140</Text>
+    <ScrollView style={{flex:1}}><Text style={{fontWeight: 'bold',fontSize: 30,marginTop: 10}}>Chocolate</Text><Text>Calories: 140</Text>
 <Text>Fat: 5.0</Text>
 <Text>Sat fat: 3.0</Text>
 <Text>Trans fat: 0.0</Text>
@@ -16,7 +16,7 @@ function NewScreen({ navigation }) {
 <Text>Calcium: 0.0</Text>
 <Text>Iron: 0.0</Text>
 <Text>Serving size: 34.0g</Text>
-<Text style={{fontWeight: 'bold',fontSize: 40,marginTop: 10}}>Nuts</Text><Text>Calories: 120</Text>
+<Text style={{fontWeight: 'bold',fontSize: 30,marginTop: 10}}>Nuts</Text><Text>Calories: 120</Text>
 <Text>Fat: 8.0</Text>
 <Text>Sat fat: 3.0</Text>
 <Text>Trans fat: 0.0</Text>

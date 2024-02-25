@@ -94,6 +94,7 @@ function DetailsScreen({ navigation }) {
   //const [image, setImage] = useState(null);
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
+    await ImagePicker.requestCameraPermissionsAsync();
 
     // get the image
     let result = await ImagePicker.launchCameraAsync({
