@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
 
-const backendServerUrl = "http://10.42.51.226:8080/upload";
+const backendServerUrl = "http://10.42.25.0:8080/upload";
 
 function HomeScreen({ navigation }) {
   return (
@@ -63,9 +63,7 @@ function DetailsScreen({ navigation }) {
       headers: {
         'content-type': 'multipart/form-data',
       },
-    }).then(() => {
-      updateScreen();
-    });
+    })
   };
 
   return (
