@@ -9,21 +9,18 @@ import * as ImagePicker from 'expo-image-picker';
 
 import NewScreen from './NewScreen';
 
-import NewScreen from './NewScreen';
-
 const backendServerUrl = "http://10.42.25.0:8080/upload";
+//      <Image source={require('./assets/icon.png')} />
 
 function HomeScreen({ navigation }) {
+
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
-      />
-      <Button
-        title="Go to NewScreen"
-        onPress={() => navigation.navigate('NewScreen')}
       />
     </View>
   );
@@ -71,23 +68,16 @@ function DetailsScreen({ navigation }) {
       headers: {
         'content-type': 'multipart/form-data',
       },
-    })
+    }).then(() => { navigation.navigate('NewScreen'); })
   };
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
-
       <Button title="Select photo" onPress={() => {
         pickImage();
       }} />
         {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }}
       />}
-
     </View>
   );
 }
