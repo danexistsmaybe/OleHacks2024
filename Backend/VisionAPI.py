@@ -31,7 +31,7 @@ def vision(imagepath):
         "content": [
           {
             "type": "text",
-            "text": "Please make a text file-based table of individual ingredients that are in the food that is provided with no further information added, if it is not food, send back an error,thank you!"
+            "text": "GPT Prompt: Please make a list, separated by line breaks, of basic ingredients that are in the image of food that is provided; do not introduce the list with any text, and make sure each ingredient is not elaborated on. If it is not food please send only the word error. Thank you!!"
           },
           {
             "type": "image_url",
@@ -46,8 +46,8 @@ def vision(imagepath):
   }
 
   response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-  print(response.json())
-  return(response.json())
+  #print(response.json()['choices'][0]['message'])
+  return(response.json()['choices'][0]['message']['content'])
 
 
 def main():

@@ -2,21 +2,25 @@ from bottle import *
 import os
 from VisionAPI import *
 from scraper import scrape
+#from format import *
+
 
 def clear():
     try:
         os.remove("prompt.jpg")
     except FileNotFoundError as e:
-        print()
+        print() # do nothing lol
 
+# three step process
 def process_image():
     ingredients = vision("prompt.jpg")
-    scrape(ingredients.split('\n'))
+    data = scrape(ingredients.split('\n'))
+    #format(data)
 
-
-
+# server request handling
 @route('/upload', method="POST")
 def upload():
+    #try:
     category   = request.forms.get('category')
     upload     = request.files.get('photo')
     """name, ext = os.path.splitext(upload.filename)
@@ -27,9 +31,10 @@ def upload():
     clear()
     upload.filename = "prompt.jpg"
     upload.save(save_path) # appends upload.filename automatically
-
-    # call main processing algorithm
     #process_image()
+    """except Exception as e:
+        print(e)
+        return 500"""
 
     return 'OK'
 
