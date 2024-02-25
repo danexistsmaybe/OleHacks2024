@@ -9,7 +9,9 @@ import * as ImagePicker from 'expo-image-picker';
 
 import NewScreen from './NewScreen';
 
-const backendServerUrl = "http://10.42.51.226:8080/upload";
+import NewScreen from './NewScreen';
+
+const backendServerUrl = "http://10.42.25.0:8080/upload";
 
 function HomeScreen({ navigation }) {
   return (
@@ -69,9 +71,7 @@ function DetailsScreen({ navigation }) {
       headers: {
         'content-type': 'multipart/form-data',
       },
-    }).then(() => {
-      updateScreen();
-    });
+    })
   };
 
   return (
