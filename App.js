@@ -18,6 +18,7 @@ function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
+      <Image source={require('./assets/icon.png')} style={{ width: 200, height: 200 }}/>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}

@@ -13,7 +13,7 @@ function NewScreen({ navigation }) {
     
 
     for ingredient in data:
-        towrite.append("<Text style={{fontWeight: 'bold',fontSize: 40,marginTop: 10}}>"+recapitalize(ingredient)+"</Text>")
+        towrite.append("<Text style={{fontWeight: 'bold',fontSize: 30,marginTop: 10}}>"+recapitalize(ingredient)+"</Text>")
         
         # do specific stuff first
         if data[ingredient].get("serving Size") != None: 
