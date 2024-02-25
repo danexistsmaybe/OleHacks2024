@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
 
+import NewScreen from './NewScreen';
+
 const backendServerUrl = "http://10.42.51.226:8080/upload";
 
 function HomeScreen({ navigation }) {
@@ -16,6 +18,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
+      />
+      <Button
+        title="Go to NewScreen"
+        onPress={() => navigation.navigate('NewScreen')}
       />
     </View>
   );
@@ -95,6 +101,7 @@ return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="NewScreen" component={NewScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );
