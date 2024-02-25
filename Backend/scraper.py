@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import httpreqs
 
 def parse_food_url(url):
-    #
+    print()
 
 def get_food_url(ingredient):
     searchurl = "https://fdc.nal.usda.gov/fdc-app.html#/?query="+ingredient
