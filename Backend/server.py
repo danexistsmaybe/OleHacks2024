@@ -13,7 +13,8 @@ def clear():
 # two step process
 def process_image():
     ingredients = vision("prompt.jpg")
-    scrape(ingredients.split('\n'))
+    data = scrape(ingredients.split('\n'))
+    print(data)
 
 # server request handling
 @route('/upload', method="POST")
@@ -29,7 +30,7 @@ def upload():
     clear()
     upload.filename = "prompt.jpg"
     upload.save(save_path) # appends upload.filename automatically
-    process_image()
+    #process_image()
     """except Exception as e:
         print(e)
         return 500"""
