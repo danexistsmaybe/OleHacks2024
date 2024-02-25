@@ -2,7 +2,8 @@ from bottle import *
 import os
 from VisionAPI import *
 from scraper import scrape
-#from format import *
+from format import *
+from scraper import PromptException
 
 
 def clear():
@@ -15,7 +16,7 @@ def clear():
 def process_image():
     ingredients = vision("prompt.jpg")
     data = scrape(ingredients.split('\n'))
-    #format(data)
+    format(data)
 
 # server request handling
 @route('/upload', method="POST")
@@ -31,10 +32,10 @@ def upload():
     clear()
     upload.filename = "prompt.jpg"
     upload.save(save_path) # appends upload.filename automatically
-    #process_image()
-    """except Exception as e:
-        print(e)
-        return 500"""
+    try:
+        process_image()
+    except PromptException as e:
+        return e
 
     return 'OK'
 

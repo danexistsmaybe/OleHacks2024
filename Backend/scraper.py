@@ -2,6 +2,9 @@
 import json
 import httpreqs
 
+class PromptException(Exception):
+    pass
+
 def get_key():
     file = open("key2.txt",'r')
     key = file.read()
@@ -35,7 +38,7 @@ def get_food_url(ingredient):
 
     if page["foods"] == []:
         print("Error on prompt: "+ingredient)
-        return "https://www.pornhub.com" 
+        raise PromptException("AI could not interpret prompt")
 
     id = page["foods"][0]["fdcId"]
 

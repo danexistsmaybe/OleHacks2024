@@ -4,7 +4,12 @@ def recapitalize(text):
 
 
 def format(data):
-    towrite = []
+    towrite = ["""import { View, Text } from 'react-native';
+
+function NewScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>"""]
+    
 
     for ingredient in data:
         towrite.append("<Text>"+data[ingredient]+"</Text>")
@@ -39,6 +44,11 @@ def format(data):
         # do other stuff
         for key in data[ingredient]:
             towrite.append("<Text>"+recapitalize(key)+": "+data[ingredient][key]+"</Text>\n")
-    file = open("../output.js",'w')
-    
+
+
+    towrite.append("</View>\n);\n}\nexport default NewScreen;]")
+    file = open("../NewScreen.js",'w')
+    file.write("".join(towrite))
+    file.close()
+
 
