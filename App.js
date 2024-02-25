@@ -66,11 +66,17 @@ export default function App() {
     // No permissions request is necessary for launching the image library
 
     // get the image
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: false,
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      cameraType: 'back',
       quality: 1,
     });
+    /*let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: false,
+      cameraType: 'back',
+      quality: 1,
+    });*/
 
     // if the user did not cancel the thing, set image
     if (!result.canceled) {

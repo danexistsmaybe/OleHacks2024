@@ -2,6 +2,7 @@ from bottle import *
 import os
 from VisionAPI import *
 from scraper import scrape
+#from format import *
 
 
 def clear():
@@ -10,11 +11,11 @@ def clear():
     except FileNotFoundError as e:
         print() # do nothing lol
 
-# two step process
+# three step process
 def process_image():
     ingredients = vision("prompt.jpg")
     data = scrape(ingredients.split('\n'))
-    print(data)
+    #format(data)
 
 # server request handling
 @route('/upload', method="POST")
