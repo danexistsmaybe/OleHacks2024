@@ -10,7 +10,7 @@ It will be necessary to replace the IP Address for some users in the app.js file
 
 ## App Functions
 
-Our application makes use of OpenAIs new Vison API which connects with the expo server and bottle servers to 
+Our application makes use of OpenAIs new Vison API which connects with the expo server and bottle servers to take an image from your phone and runs them through Vison, the data is then sent through another API which accesses the National Agricultural Library to find the nutrional information of the ingredients that Vision API finds within the image. The data is then routed and displayed onto the users device 
 
 ## Project Goals
 
