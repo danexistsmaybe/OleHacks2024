@@ -17,9 +17,10 @@ def parse_food_url(url):
     page = json.loads(session.get(url).text)
 
     # get nutrition facts
+    if page.get("labelNutrients")==None: return None # if bad json
     for key in page["labelNutrients"]:
         info[key] = page["labelNutrients"][key].get("value") # value will be None if value doesn't exist
-
+    
     # get serving info
     info["Serving size"] = str(page["foodUpdateLog"][0]["servingSize"])+str(page["foodUpdateLog"][0]["servingSizeUnit"])
 
@@ -48,7 +49,9 @@ def scrape(ingredients):
     data = {}
     for ingredient in ingredients:
         url = get_food_url(ingredient)
-        data[ingredient] = parse_food_url(url)
+        d = parse_food_url(url)
+        if d!=None: data[ingredient] = d
+        else: continue
     return data
 
 
